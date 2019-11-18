@@ -1,10 +1,20 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-searchbar  showCancelButton="always"></ion-searchbar>
+      
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <ion-searchbar [formControl]="searchControl"(ionChange)="onSearchInput()">
+      </ion-searchbar>
+    <div *ngIf="searching" class="spinner-container">
+      <ion-spinner></ion-spinner>
+    </div>
+    <ion-list>
+      <ion-item *ngFor="let item of items">
+        {{ item.title }}
+      </ion-item>
+    </ion-list>
   <ion-item>
     <ion-label position="floating">Name</ion-label>
     <ion-input type="text" placeholder="Enter Input"></ion-input>
@@ -41,14 +51,6 @@
       <div padding>
           <button block>Submit</button>
       </div>
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            1s
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-      
 </ion-content>
 
 <ion-footer>
